@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent-bg: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+
+    --bg-0: #FAF9F5;
+    --bg-000: #FAF9F5;
+    --bg-100: #FFFFFF;
+    --bg-200: #F0EEE6;
+    --bg-300: #DDDDDD;
+    --text-100: #1F1E1D;
+    --text-200: #3D3D3A;
+    --text-300: #73726C;
+    --text-400: #888888;
+    --text-500: #999999;
+    --accent: #D97757;
+    --accent-hover: #C6613F;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Hint browser to use GPU for full page compositing */
+  -webkit-text-size-adjust: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  background-color: #000;
+  color: #fff;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Prevent layout shifts from subpixel rendering */
+  text-rendering: optimizeLegibility;
+}
+
+/* Entrance Blur Cascade Animations */
+@keyframes blurInUp {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translate3d(0, 24px, 0);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-blur-1 {
+  animation: blurInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.animate-blur-2 {
+  animation: blurInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.animate-blur-3 {
+  animation: blurInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+/* 3D Perspective Grid */
+.perspective-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  background-color: #000;
+}
+
+.perspective-grid {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  width: 100%;
+  perspective: var(--perspective, 1600px);
+  overflow: visible;
+  /* Force GPU layer for perspective container */
+  transform: translateZ(0);
+}
+
+.perspective-grid-wrap {
+  height: var(--grid-height, auto);
+  width: var(--grid-width, 100%);
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns, 1), 1fr);
+  gap: var(--grid-gap, 0.75rem);
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: visible;
+  /* Explicit GPU promotion */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Notification Cards */
+.perspective-grid-item {
+  width: 100%;
+  max-width: 330px;
+  min-height: 64px;
+  height: auto;
+  position: relative;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
+  background-color: #0c0c0e !important;
+  opacity: 1 !important;
+  isolation: isolate;
+  padding: 0.65rem 0.85rem;
+  /* Subpixel text sharpness */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* Line mask reveal — GPU only with translate3d */
+.line-inner {
+  will-change: transform;
+  transform: translate3d(0, 100%, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* contain-strict for hero to limit browser paint area */
+.contain-strict {
+  contain: layout paint;
+}
+
+/* Animação do Cursor de Digitação no Chat */
+@keyframes custom-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.chat-input-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background-color: #ffffff;
+  margin-left: 1.5px;
+  vertical-align: middle;
+}
+
+.chat-input-cursor.blink {
+  animation: custom-cursor-blink 1s steps(2, start) infinite;
+}
+
+.chat-input-cursor.solid {
+  opacity: 1;
+  animation: none;
+}
