@@ -86,7 +86,7 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
       return new Promise((resolve) => {
         let loaded = 0;
         const textures: THREE.CanvasTexture[] = [];
-        
+
         displayImages.forEach((url, idx) => {
           const img = new Image();
           img.crossOrigin = 'Anonymous';
@@ -97,12 +97,12 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
             const ctx = canvas.getContext('2d');
             if (ctx) {
               ctx.clearRect(0, 0, 1280, 800);
-              
+
               // Bordas arredondadas independentes
               ctx.beginPath();
               ctx.roundRect(0, 0, 1280, 800, 36);
               ctx.clip();
-              
+
               const imgRatio = img.naturalWidth / img.naturalHeight;
               let srcX = 0, srcY = 0, srcW = img.naturalWidth, srcH = img.naturalHeight;
               if (imgRatio > ASPECT_16_10) {
@@ -112,10 +112,10 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
                 srcH = img.naturalWidth / ASPECT_16_10;
                 srcY = (img.naturalHeight - srcH) / 2;
               }
-              
+
               ctx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, 1280, 800);
             }
-            
+
             const tex = new THREE.CanvasTexture(canvas);
             tex.minFilter = THREE.LinearFilter;
             tex.magFilter = THREE.LinearFilter;
@@ -127,7 +127,7 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
               tex.encoding = 3001; // THREE.sRGBEncoding
             }
             textures[idx] = tex;
-            
+
             loaded++;
             if (loaded === numberOfImages) resolve(textures);
           };
@@ -144,13 +144,13 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
     // Dobra as 9 malhas no espaço matemático 3D
     const updateMeshesMorphing = () => {
       if (meshes.length === 0) return;
-      
+
       const totalSlots = numberOfImages * trackMultiplier;
       const slotWidth3D = (ASPECT_16_10 + targetConfig.gapRatio) * targetConfig.imageHeight;
       const totalWidth = slotWidth3D * totalSlots;
       const cardWidth3D = ASPECT_16_10 * targetConfig.imageHeight;
 
-      meshes.forEach((mesh, idx) => {
+      meshes.forEach((_mesh, idx) => {
         const geo = geometries[idx];
         const positions = geo.attributes.position;
         const basePos = basePositions[idx];
@@ -159,7 +159,7 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
         for (let i = 0; i < positions.count; i++) {
           const bx = basePos[i * 3];
           const by = basePos[i * 3 + 1];
-          
+
           // Escala hover APLICADA ANTES DA DOBRA (Cresce independente sem cortes!)
           const lx = bx * hoverScale;
           const ly = by * hoverScale;
@@ -170,33 +170,33 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
           // 1. Calcula o centro exato deste card no trilho
           let globalCenterX = -totalWidth / 2 + (physicalIdx * slotWidth3D) + (cardWidth3D / 2);
           globalCenterX += currentOffset * slotWidth3D;
-          
+
           let tCenter = (globalCenterX + totalWidth / 2) / totalWidth;
           tCenter = Math.max(0, Math.min(1, tCenter));
 
           // 2. Calcula o raio e o ângulo base do centro do card
           const angleCenter = (tCenter - 0.5) * Math.PI * 2 * (targetConfig.spiralTurns * trackMultiplier);
           const currentRad = targetConfig.spiralRadius * (1 - (tCenter - 0.5) * 0.1);
-          
+
           // 3. Adiciona o deslocamento local (lx) transformado em arco (para não esticar/achatar a imagem)
           const angleOffset = lx / currentRad;
           const angle = angleCenter + angleOffset;
-          
+
           const px = Math.sin(angle) * currentRad;
           const pz = Math.cos(angle) * currentRad;
-          
+
           // 4. Adiciona a inclinação vertical (slope) para que as bordas das imagens se alinhem perfeitamente
           const totalAngle = Math.PI * 2 * (targetConfig.spiralTurns * trackMultiplier);
           const totalHeight = targetConfig.spiralHeight * trackMultiplier;
           const slope = totalHeight / totalAngle;
           const pyOffset = angleOffset * slope;
-          
+
           // ly sem multiplicar por 0.35 para manter o aspect ratio real
           const py = (tCenter - 0.5) * totalHeight + pyOffset + ly + 1.8;
-          
+
           positions.setXYZ(i, px, py, pz);
         }
-        
+
         // Sem computeVertexNormals pois usamos MeshBasicMaterial (não tem luz)
         // Sem computeBoundingSphere todo frame, usaremos frustumCulled = false e bounds estáticos
         positions.needsUpdate = true;
@@ -225,14 +225,14 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
         targetConfig.spiralHeight = 16.5;
         camera.position.set(0, 0, 19.5);
       }
-      
+
       const slotWidth3D = (ASPECT_16_10 + targetConfig.gapRatio) * targetConfig.imageHeight;
       // Calcula o raio matematicamente perfeito para que as imagens se curvem sem achatar
       targetConfig.spiralRadius = (slotWidth3D * 27) / (3.75 * 2 * Math.PI);
       // Recria as geometrias base com o novo tamanho
       if (geometries.length > 0) {
         const cardWidth3D = ASPECT_16_10 * targetConfig.imageHeight;
-        geometries.forEach((geo, idx) => {
+        geometries.forEach((_geo, idx) => {
           const newGeo = new THREE.PlaneGeometry(cardWidth3D, targetConfig.imageHeight, 32, 8);
           basePositions[idx] = new Float32Array(newGeo.attributes.position.array);
         });
@@ -278,7 +278,7 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
       const textures = await createIndependentTextures();
       const cardWidth3D = ASPECT_16_10 * targetConfig.imageHeight;
 
-      textures.forEach((tex, idx) => {
+      textures.forEach((tex, _idx) => {
         const geo = new THREE.PlaneGeometry(cardWidth3D, targetConfig.imageHeight, 32, 8);
         geometries.push(geo);
         basePositions.push(new Float32Array(geo.attributes.position.array));
@@ -288,7 +288,7 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
           transparent: true,
           side: THREE.DoubleSide,
         });
-        
+
         // Injeta lógica para não deixar as imagens invertidas (espelhadas) na parte de trás
         mat.onBeforeCompile = (shader) => {
           shader.fragmentShader = shader.fragmentShader.replace(
@@ -305,16 +305,16 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
             `
           );
         };
-        
+
         materials.push(mat);
-        
+
         const mesh = new THREE.Mesh(geo, mat);
-        
+
         // Desativa frustum culled para poupar a CPU de recalcular limites 3D a cada frame
         mesh.frustumCulled = false;
         // Bounding sphere gigante fixo apenas para garantir que o Raycaster sempre detecte
         geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), 100);
-        
+
         meshes.push(mesh);
         tiltGroup.add(mesh);
       });
@@ -405,29 +405,29 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
       if (meshes.length > 0) {
         // Interpolação LERP de inércia líquida
         currentOffset += (targetOffset - currentOffset) * 0.07;
-        
+
         // Atualiza a dobra das 9 malhas em tempo real (JS Vertex Morphing)
         updateMeshesMorphing();
-        
+
         // Raycaster Hover Logic
         if (camera) {
           raycaster.setFromCamera(mouse, camera);
           const intersects = raycaster.intersectObjects(meshes);
           let hoveredIndex = -1;
-          
+
           if (intersects.length > 0) {
             // Como são 9 malhas independentes, basta ver qual mesh foi atingida
             const hitMesh = intersects[0].object as THREE.Mesh;
             hoveredIndex = meshes.indexOf(hitMesh);
           }
-          
+
           for (let i = 0; i < 9; i++) {
             targetHover[i] = (i === hoveredIndex) ? 1.0 : 0.0;
             const diff = targetHover[i] - currentHover[i];
             if (Math.abs(diff) > 0.001) {
-               currentHover[i] += diff * 0.08; // Smooth hover
+              currentHover[i] += diff * 0.08; // Smooth hover
             } else if (currentHover[i] !== targetHover[i]) {
-               currentHover[i] = targetHover[i];
+              currentHover[i] = targetHover[i];
             }
           }
         }
@@ -475,14 +475,14 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
     >
       <div className="sticky top-0 left-0 w-full h-screen min-h-[920px] overflow-hidden cursor-grab select-none">
         {/* Background Video que faz fade in durante a chegada */}
-        <video 
+        <video
           ref={videoRef}
-          src="/back.mp4" 
+          src="/back.mp4"
           poster="/back 2.jpg"
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 w-full h-full object-cover pointer-events-none -z-10"
           style={{ opacity: 0 }}
         />
