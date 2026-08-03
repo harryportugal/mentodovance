@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CopyText } from '@/components/CopyText';
+import Spiral3DCarousel from '@/components/Spiral3DCarousel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,13 +84,12 @@ export const TreasureMapSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white text-black pt-0 pb-32 md:pb-48 px-4 md:px-8 overflow-visible selection:bg-black selection:text-white font-sans antialiased -mt-20 md:-mt-28"
+      className="relative bg-white text-black pt-0 pb-32 md:pb-48 px-0 overflow-visible selection:bg-black selection:text-white font-sans antialiased -mt-20 md:-mt-28"
     >
       {/* Monochromatic Dot Matrix Grid Background */}
       <div className="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none" />
 
-      <div className="relative max-w-4xl mx-auto flex flex-col items-center">
-
+      <div className="relative max-w-4xl mx-auto flex flex-col items-center px-4 md:px-8 z-20">
         {/* -------------------------------------------------------------
             SEGMENT 1 DOTTED TRAIL: Pulled closer to Chatbot bottom
             ------------------------------------------------------------- */}
@@ -140,7 +140,7 @@ export const TreasureMapSection = () => {
         {/* -------------------------------------------------------------
             STEP 1: POSITIONING & VANCE CLASS (HTML node)
             ------------------------------------------------------------- */}
-        <div ref={node1Ref} className="w-full max-w-3xl relative z-10 text-center my-4 md:my-6">
+        <div ref={node1Ref} className="w-full max-w-3xl relative z-10 text-center my-4 md:my-6 pointer-events-auto">
           <CopyText startTrigger="top 85%" stagger={0.15} className="relative py-2 px-4 text-center">
             <div className="overflow-hidden py-1">
               <p className="line-inner text-2xl sm:text-3xl md:text-4xl font-medium text-black leading-relaxed tracking-tight max-w-2xl mx-auto" style={{ transform: 'translateY(110%)' }}>
@@ -221,7 +221,7 @@ export const TreasureMapSection = () => {
         {/* -------------------------------------------------------------
             STEP 2: MARQUEE DRAG SELECTION BOX (HTML node)
             ------------------------------------------------------------- */}
-        <div ref={node2Ref} className="w-full max-w-2xl relative z-10 text-center my-4 md:my-6">
+        <div ref={node2Ref} className="w-full max-w-2xl relative z-10 text-center my-4 md:my-6 pointer-events-auto">
           <div className="relative p-6 sm:p-10 md:p-12 transition-all duration-500">
             {/* Animated Marquee Drag-Selection Rectangle */}
             <div
@@ -268,6 +268,14 @@ export const TreasureMapSection = () => {
             </CopyText>
           </div>
         </div>
+      </div>
+
+      {/* -------------------------------------------------------------
+          STEP 2.5 / FOLLOW-UP: 3D SPIRAL IMAGE CAROUSEL
+          Placed below Step 2 marquee selection box inside TreasureMapSection
+          ------------------------------------------------------------- */}
+      <div className="w-full relative z-20 mt-8 md:mt-14 overflow-visible">
+        <Spiral3DCarousel />
       </div>
     </section>
   );
