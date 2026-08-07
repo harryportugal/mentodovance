@@ -54,7 +54,7 @@ export const FinalHeroCtaSection: React.FC = () => {
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none will-change-transform"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none will-change-transform"
         style={{ transform: 'translateZ(0)' }}
       />
 

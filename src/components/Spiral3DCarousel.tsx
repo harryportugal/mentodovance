@@ -267,7 +267,6 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
   onScrollEnd,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const targetOffsetRef = useRef(-1.5);
   const dragRotationRef = useRef({ x: 0, z: 0 });
@@ -289,19 +288,6 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-
-    // Fade video as section enters viewport
-    const fadeTrigger = ScrollTrigger.create({
-      trigger: container,
-      start: 'top bottom',
-      end: 'top top',
-      scrub: true,
-      onUpdate: (self) => {
-        if (videoRef.current) {
-          videoRef.current.style.opacity = (self.progress * 0.2).toString();
-        }
-      },
-    });
 
     // Main scroll-driven animation — bidirectional (scrub handles forward & backward)
     const scrollTrigger = ScrollTrigger.create({
@@ -361,7 +347,6 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
 
     return () => {
       scrollTrigger.kill();
-      fadeTrigger.kill();
       container.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('mousemove', handleMouseMoveGlobal);
@@ -390,18 +375,6 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
       />
 
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden cursor-grab select-none">
-        {/* Background Video */}
-        <video
-          ref={videoRef}
-          src="/back.mp4"
-          poster="/back 2.jpg"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none -z-10"
-          style={{ opacity: 0 }}
-        />
 
         {/* Top fade only — blends into section above */}
         <div
