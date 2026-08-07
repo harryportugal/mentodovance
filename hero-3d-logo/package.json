@@ -1,0 +1,19 @@
+{
+  "name": "hero-3d-logo",
+  "version": "1.0.0",
+  "description": "Componente 3D do Logo Vance/Hero interativo com Three.js e React Three Fiber",
+  "main": "Hero3DLogo.tsx",
+  "scripts": {},
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/three": "^0.184.1",
+    "typescript": "^5.0.0"
+  }
+}

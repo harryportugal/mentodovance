@@ -65,11 +65,16 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(8px) scale(0.98)', filter: 'blur(4px)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)', filter: 'blur(0)' },
         },
+        shine: {
+          '0%': { backgroundPosition: '200% center' },
+          '100%': { backgroundPosition: '-200% center' },
+        },
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.2s ease-out',
         'blur-in-up': 'blur-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both',
         'fade-in': 'fadeIn 0.3s ease-out both',
+        'shine': 'shine 8s linear infinite',
       },
     },
   },

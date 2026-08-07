@@ -73,27 +73,25 @@ const ThinkingIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 /* --- Configurações da Animação --- */
-const PHRASES = [
-    "Claude, me passe 5 empresas da minha cidade que não têm um site bonito",
-    "Claude, como abordar empresários locais e fechar um projeto de R$10.000?",
-    "Claude, monte um script de vendas para clientes que pedem desconto",
-    "Claude, como transformar meu portfólio em uma máquina de fechar contratos de R$10k",
-    "Claude, quais argumentos provam que um site de R$10.000 dá 10x mais retorno?",
-];
-
 const MODEL_NAME = "Vance God Mode";
 const INITIAL_MODEL = "Sonnet 4.5";
-
-const TYPE_SPEED = 45;
-const ERASE_SPEED = 25;
-const PAUSE_AFTER_TYPE = 2200;
-const PAUSE_AFTER_ERASE = 600;
 
 export interface ClaudeChatInputProps {
     active?: boolean;
 }
 
 export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _active = false }) => {
+    const PHRASES = [
+        "Claude, me passe 5 empresas da minha cidade que não têm um site bonito",
+        "Claude, como abordar empresários locais e fechar um projeto de R$10.000?",
+        "Claude, monte um script de vendas para clientes que pedem desconto",
+        "Claude, como transformar meu portfólio em uma máquina de fechar contratos de R$10k",
+        "Claude, quais argumentos provam que um site de R$10.000 dá 10x mais retorno?",
+    ];
+    const TYPE_SPEED = 18;
+    const ERASE_SPEED = 8;
+    const PAUSE_AFTER_TYPE = 900;
+    const PAUSE_AFTER_ERASE = 300;
     const [displayedModel, setDisplayedModel] = useState(INITIAL_MODEL);
     const [isThinkingEnabled, setIsThinkingEnabled] = useState(false);
     const [typedText, setTypedText] = useState("");
@@ -147,68 +145,68 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
                 setPlaceholderOpacity(1);
                 setShowMouse(false);
 
-                await sleep(1000);
+                await sleep(300);
                 if (cancelRef.current) return;
 
                 // Mostra cursor simulado
                 setShowMouse(true);
-                await sleep(50);
+                await sleep(30);
 
                 // ── Passo 1: Mover até o seletor de modelo ──
                 moveToEl(modelBtnRef.current, 0.5, 0.5);
-                await sleep(800);
+                await sleep(400);
                 if (cancelRef.current) return;
 
                 // Clicar para abrir o dropdown
                 await click();
                 setIsDropdownOpen(true);
-                await sleep(600);
+                await sleep(300);
                 if (cancelRef.current) return;
 
                 // ── Passo 2: Mover até o item "Vance God Mode" ──
-                await sleep(100);
+                await sleep(50);
                 moveToEl(dropdownItemRefs.current[0], 0.4, 0.5);
-                await sleep(500);
+                await sleep(250);
                 if (cancelRef.current) return;
                 setHoveredModel(MODEL_NAME);
-                await sleep(500);
+                await sleep(250);
                 if (cancelRef.current) return;
 
                 // Clicar para selecionar
                 await click();
-                await sleep(100);
+                await sleep(50);
                 setDisplayedModel(MODEL_NAME);
                 setIsDropdownOpen(false);
                 setHoveredModel(null);
-                await sleep(600);
+                await sleep(300);
                 if (cancelRef.current) return;
 
                 // ── Passo 3: Mover até o botão de Thinking ──
                 moveToEl(thinkingBtnRef.current, 0.5, 0.5);
-                await sleep(700);
+                await sleep(350);
                 if (cancelRef.current) return;
 
                 // Clicar para ativar o modo de pensamento
                 await click();
                 setIsThinkingEnabled(true);
-                await sleep(600);
+                await sleep(300);
                 if (cancelRef.current) return;
 
                 // ── Passo 4: Mover até a área do input e mudar para cursor de texto ──
                 moveToEl(inputAreaRef.current, 0.1, 0.5);
-                await sleep(500);
+                await sleep(250);
                 setIsTextMode(true);
-                await sleep(300);
+                await sleep(150);
                 if (cancelRef.current) return;
 
                 // Clicar na caixa de texto
                 await click();
-                await sleep(200);
+                await sleep(100);
 
                 // Ocultar cursor do mouse e placeholder
                 setShowMouse(false);
                 setPlaceholderOpacity(0);
-                await sleep(500);
+                await sleep(250);
 
                 // ── Passo 5: Digitar frases uma por uma ──
                 for (let p = 0; p < PHRASES.length; p++) {
@@ -260,12 +258,12 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
         const ctx = gsap.context(() => {
             ScrollTrigger.create({
                 trigger: containerRef.current,
-                start: 'top 85%',
+                start: 'top 150%',
                 once: true,
                 onEnter: () => {
                     setTimeout(() => {
                         startLoop();
-                    }, 500);
+                    }, 100);
                 },
             });
         }, containerRef);

@@ -1,0 +1,261 @@
+[data-media-01-open],
+.media-01 button {
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-media-01-open],
+[data-media-01-open] *,
+.media-01,
+.media-01 *,
+.media-01 *::before,
+.media-01 *::after {
+  box-sizing: border-box;
+}
+
+.media-01.media-01-embedded {
+  position: relative;
+  inset: auto;
+  z-index: 10;
+  width: 100%;
+  padding: 0;
+  display: block;
+}
+
+.media-01.media-01-embedded .frame {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: none;
+}
+
+.media-01.media-01-embedded .shell {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.media-01.media-01-embedded .close,
+.media-01.media-01-embedded .backdrop {
+  display: none !important;
+}
+
+.media-01 {
+  --corner-shape: superellipse(1.2);
+  --box-shadow: 0px 4px 4px 0px hsla(0, 0%, 0%, 0.039), 0px 0px 1px 0px hsla(0, 0%, 0%, 0.62);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --white: #ffffff;
+  --black: #050505;
+  --control: 26px;
+  --icon: 20px;
+  --icon-stroke: 2;
+  --gap: 12px;
+  --inset: 22px;
+  --bottom: 16px;
+  --timeline-bottom: 50px;
+  --time-size: 14px;
+  --time-width: 88px;
+  --volume-open: calc(var(--control) + var(--volume-range) + var(--gap));
+  --volume-range: 54px;
+  --track-height: 4px;
+  --track-gap: 3px;
+  color: var(--white);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.media-01 .frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.media-01 .shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(119, 119, 119, 0.31);
+  box-shadow: var(--box-shadow);
+  opacity: 1;
+}
+
+.media-01 .stage,
+.media-01 .video {
+  width: 100%;
+  height: 100%;
+}
+
+.media-01 .stage {
+  position: relative;
+  background: var(--black);
+}
+
+.media-01 .video {
+  object-fit: cover;
+  opacity: 1;
+}
+
+.media-01 .shade {
+  position: absolute;
+  inset: auto 0 0;
+  height: 52%;
+  opacity: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.36) 28%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.media-01 .seek {
+  position: absolute;
+  left: var(--inset);
+  right: var(--inset);
+  bottom: var(--timeline-bottom);
+  z-index: 3;
+  height: 34px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.media-01 .seek .timeline {
+  position: relative;
+  width: 100%;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.media-01 .seek .timeline .track {
+  position: relative;
+  width: 100%;
+  height: var(--track-height);
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  gap: var(--track-gap);
+}
+
+.media-01 .seek .timeline .track .chapter {
+  position: relative;
+  min-width: 10px;
+  height: 100%;
+  flex-basis: 0;
+  flex-grow: var(--chapter-grow, 1);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.media-01 .seek .timeline .track .chapter .fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--chapter-progress, 0%);
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.media-01 .seek .timeline .scrubber {
+  position: absolute;
+  top: 50%;
+  left: var(--scrubber-left, 0%);
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--white);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.media-01 .controls {
+  position: absolute;
+  left: var(--inset);
+  right: var(--inset);
+  bottom: var(--bottom);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.media-01 .controls .control,
+.media-01 .controls .time,
+.media-01 .controls .volume,
+.media-01 .controls .speed {
+  pointer-events: auto;
+  background: transparent;
+}
+
+.media-01 .controls .control {
+  width: var(--control);
+  height: var(--control);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--white);
+}
+.media-01 .controls .control svg { width: var(--icon); height: var(--icon); fill: currentColor; }
+
+.media-01 .controls .time {
+  height: var(--control);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--time-size);
+  color: var(--white);
+}
+
+.media-01 .controls .speed { margin-left: auto; position: relative; }
+.media-01 .controls .speed-toggle { font-size: var(--time-size); color: var(--white); }
+
+.media-01 .controls .volume {
+  width: var(--control);
+  height: var(--control);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: width 260ms ease;
+}
+.media-01 .controls .volume:hover { width: var(--volume-open); }
+.media-01 .controls .volume .range {
+  width: var(--volume-range);
+  margin-left: 8px;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.media-01 .controls .volume:hover .range { opacity: 1; }
+
+.media-01 .controls .speed-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(40, 40, 40, 0.85);
+  backdrop-filter: blur(12px);
+}
+.media-01 .controls .speed-menu[hidden] { display: none !important; }
+.media-01 .controls .speed-menu button {
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+}
+.media-01 .controls .speed-menu button.is-active,
+.media-01 .controls .speed-menu button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}

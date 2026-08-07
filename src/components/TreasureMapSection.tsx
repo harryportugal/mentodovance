@@ -1,8 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ChevronDown } from 'lucide-react';
 import { CopyText } from '@/components/CopyText';
 import Spiral3DCarousel from '@/components/Spiral3DCarousel';
+import { AboutHarrySection } from '@/components/AboutHarrySection';
+import { EvolutionStepsSection } from '@/components/EvolutionStepsSection';
+import { EcosystemSection } from '@/components/EcosystemSection';
+import { StudentResultsShowcaseSection } from '@/components/StudentResultsShowcaseSection';
+import { FaqSection } from '@/components/FaqSection';
+import { PricingInvestmentSection } from '@/components/PricingInvestmentSection';
+import { ApplicationFormSection } from '@/components/ApplicationFormSection';
+import { FinalHeroCtaSection } from '@/components/FinalHeroCtaSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +24,11 @@ export const TreasureMapSection = () => {
   const node1Ref = useRef<HTMLDivElement>(null);
   const node2Ref = useRef<HTMLDivElement>(null);
   const selectBoxRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+
+  const handleSpiralEnd = useCallback(() => {
+    // Smooth transition handles unpinning naturally without forced scrollIntoView jumps
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current || !mask1Ref.current || !mask2Ref.current) return;
@@ -84,7 +98,7 @@ export const TreasureMapSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white text-black pt-0 pb-32 md:pb-48 px-0 overflow-visible selection:bg-black selection:text-white font-sans antialiased -mt-20 md:-mt-28"
+      className="relative bg-white text-black pt-0 pb-0 px-0 overflow-visible selection:bg-black selection:text-white font-sans antialiased -mt-20 md:-mt-28"
     >
       {/* Monochromatic Dot Matrix Grid Background */}
       <div className="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none" />
@@ -265,18 +279,49 @@ export const TreasureMapSection = () => {
                   Sem precisar mendigar cliente, sem leilão de preço e com o portfólio trabalhando por você 24h por dia.
                 </p>
               </div>
+
+              {/* Animated Arrow & Continue Scroll Text */}
+              <div className="overflow-hidden py-1 mt-8">
+                <div className="line-inner flex flex-col items-center justify-center gap-1.5 text-black/60 font-medium text-xs sm:text-sm tracking-wider uppercase relative z-10" style={{ transform: 'translateY(110%)' }}>
+                  <span>continue scrollando</span>
+                  <div className="animate-bounce mt-1 p-1 rounded-full bg-black/5 border border-black/10 flex items-center justify-center">
+                    <ChevronDown className="w-4 h-4 text-black/80" />
+                  </div>
+                </div>
+              </div>
             </CopyText>
           </div>
         </div>
       </div>
 
-      {/* -------------------------------------------------------------
-          STEP 2.5 / FOLLOW-UP: 3D SPIRAL IMAGE CAROUSEL
-          Placed below Step 2 marquee selection box inside TreasureMapSection
-          ------------------------------------------------------------- */}
-      <div className="w-full relative z-20 mt-8 md:mt-14 overflow-visible">
-        <Spiral3DCarousel />
+      {/* ── 3D SPIRAL IMAGE CAROUSEL ── */}
+      <div className="w-full relative z-20 mt-8 md:mt-14">
+        <Spiral3DCarousel onScrollEnd={handleSpiralEnd} />
       </div>
+
+      {/* ── HARRY PORTUGAL SECTION (revealed after spiral) ── */}
+      <AboutHarrySection ref={aboutRef} />
+
+      {/* ── EVOLUTION STEPS SECTION (Método V.A.N.C.E.) ── */}
+      <EvolutionStepsSection />
+
+      {/* ── ECOSYSTEM SECTION (Vance Class Features) ── */}
+      <EcosystemSection />
+
+      {/* ── STUDENT RESULTS SHOWCASE SECTION ── */}
+      <StudentResultsShowcaseSection />
+
+      {/* ── PRICING INVESTMENT SECTION ── */}
+      <PricingInvestmentSection />
+
+      {/* ── APPLICATION FORM SECTION ── */}
+      <ApplicationFormSection />
+
+      {/* ── FAQ SECTION ── */}
+      <FaqSection />
+
+      {/* ── FINAL HERO CTA SECTION ── */}
+      <FinalHeroCtaSection />
     </section>
   );
 };
