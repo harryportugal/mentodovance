@@ -303,22 +303,22 @@ export const ApplicationFormSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="application"
-      className="w-full py-20 md:py-28 px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
+      className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
     >
-      <div className="w-full max-w-3xl mx-auto flex flex-col gap-12 sm:gap-16">
+      <div className="w-full max-w-3xl mx-auto flex flex-col gap-10 sm:gap-12 md:gap-16">
         {/* ── Section Header ── */}
         <div ref={headerRef} className="max-w-2xl mx-auto text-center flex flex-col gap-3">
           <div className="overflow-hidden py-1">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Agora queremos conhecer você.
+              Agora queremos conhecer&nbsp;você.
             </h2>
           </div>
           <div className="overflow-hidden py-1">
             <p
-              className="line-inner text-base sm:text-lg text-white font-normal leading-relaxed"
+              className="line-inner text-base sm:text-lg text-white font-normal leading-relaxed [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
               A Vance Class não é para qualquer webdesigner. Responda algumas perguntas e receba um <strong className="font-semibold text-white">diagnóstico personalizado</strong> para o seu momento.
@@ -328,7 +328,7 @@ export const ApplicationFormSection: React.FC = () => {
 
         {/* ── Multi-Step Form Container ── */}
         {!isSubmitted ? (
-          <div ref={stepContainerRef} className="w-full flex flex-col gap-8">
+          <div ref={stepContainerRef} className="w-full flex flex-col gap-6 sm:gap-8">
             {/* Step Header Counter & Back Button */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <span className="text-xs font-mono font-semibold tracking-widest text-white uppercase">
@@ -339,7 +339,7 @@ export const ApplicationFormSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={handlePrevStep}
-                  className="flex items-center gap-1.5 text-xs text-white hover:text-white transition-colors cursor-pointer"
+                  className="flex items-center gap-1.5 text-xs text-white hover:text-white transition-colors cursor-pointer px-2 py-1 min-h-[44px]"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Voltar
                 </button>
@@ -348,7 +348,7 @@ export const ApplicationFormSection: React.FC = () => {
 
             {/* Question Title & Subtitle */}
             <div className="flex flex-col gap-2">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-normal text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-normal text-white tracking-tight [text-wrap:balance]">
                 {stepData.question}
               </h3>
               {stepData.subtitle && (

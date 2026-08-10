@@ -131,25 +131,25 @@ export const FaqSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="faq"
-      className="w-full py-20 md:py-28 px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
+      className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
     >
       <div className="w-full max-w-4xl mx-auto flex flex-col gap-14 md:gap-18">
         {/* ── Section Header ── */}
         <div ref={headerRef} className="max-w-3xl mx-auto text-center flex flex-col gap-3">
           <div className="overflow-hidden py-1">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(1.75rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Ainda ficou alguma dúvida?
+              Ainda ficou alguma&nbsp;dúvida?
             </h2>
           </div>
           <div className="overflow-hidden py-1">
             <p
-              className="line-inner text-base sm:text-lg text-white/90 font-normal max-w-xl mx-auto leading-relaxed"
+              className="line-inner text-base sm:text-lg text-white/90 font-normal max-w-xl mx-auto leading-relaxed [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Respostas diretas para as <strong className="font-semibold text-white">perguntas mais comuns</strong> sobre a Vance Class.
+              Respostas diretas para as <strong className="font-semibold text-white">perguntas mais comuns</strong> sobre a Vance&nbsp;Class.
             </p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export const FaqSection: React.FC = () => {
                 onClick={() => toggleItem(idx)}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-lg sm:text-xl font-normal text-white tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-normal text-white tracking-tight [text-wrap:balance]">
                     {faq.question}
                   </h3>
                   <div

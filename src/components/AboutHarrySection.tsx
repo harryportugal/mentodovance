@@ -85,40 +85,39 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
     <section
       ref={ref}
       id="about-harry"
-      className="w-full bg-white py-20 md:py-28 px-6 md:px-16 lg:px-24 selection:bg-black selection:text-white"
+      className="w-full bg-white py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-16 lg:px-24 selection:bg-black selection:text-white"
     >
-      <div ref={containerRef} className="w-full max-w-5xl mx-auto flex flex-col gap-16 md:gap-24">
+      <div ref={containerRef} className="w-full max-w-5xl mx-auto flex flex-col gap-8 sm:gap-16 md:gap-24">
         {/* Section Header */}
         <div ref={headerRef} className="max-w-3xl mx-auto text-center">
           <div className="overflow-hidden py-1 mb-4">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-black leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(1.75rem,3.8vw,3.2rem)] font-normal text-black leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Quem vai mudar a forma como você enxerga webdesign.
+              Quem vai mudar a forma como você enxerga&nbsp;webdesign.
             </h2>
           </div>
 
           <div className="overflow-hidden py-1">
             <p
-              className="line-inner text-[clamp(1.05rem,1.8vw,1.25rem)] text-neutral-600 font-normal max-w-2xl mx-auto leading-relaxed"
+              className="line-inner text-[clamp(1rem,1.8vw,1.25rem)] text-neutral-600 font-normal max-w-2xl mx-auto leading-relaxed [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              <strong className="font-semibold text-black">Dois especialistas</strong>. <strong className="font-semibold text-black">Duas habilidades</strong>. Um único objetivo: transformar você em um <strong className="font-semibold text-black">webdesigner f0da</strong>.
+              <strong className="font-semibold text-black">Dois especialistas</strong>. <strong className="font-semibold text-black">Duas habilidades</strong>. Um único objetivo: transformar você em um <strong className="font-semibold text-black">webdesigner&nbsp;f0da</strong>.
             </p>
           </div>
         </div>
 
-        {/* ── MENTOR CARD 1 ── */}
-        <div className="mentor-card grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
+        {/* ── MENTOR CARD 1 (Harry Portugal) ── */}
+        <div className="mentor-card grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 lg:gap-20 items-center">
           {/* Photo */}
           <div className="flex justify-center md:justify-start">
             <div
-              className="mentor-photo relative overflow-hidden"
+              className="mentor-photo relative overflow-hidden max-w-[270px] sm:max-w-[360px]"
               style={{
                 borderRadius: '18px',
                 width: '100%',
-                maxWidth: '360px',
                 aspectRatio: '3/4',
                 opacity: 0,
                 transform: 'scale(0.88) translateY(24px)',
@@ -135,20 +134,21 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
           </div>
 
           {/* Text + Button */}
-          <div className="mentor-text-col flex flex-col items-start gap-4">
+          <div className="mentor-text-col flex flex-col items-center text-center md:items-start md:text-left gap-3 sm:gap-4 w-full">
             <div className="overflow-hidden">
               <h2
-                className="line-inner text-[clamp(2rem,3.5vw,2.75rem)] font-normal leading-tight tracking-tight text-black"
+                className="line-inner text-[clamp(1.75rem,3.5vw,2.75rem)] font-normal leading-tight tracking-tight text-black text-center md:text-left"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
               >
                 Harry Portugal
               </h2>
             </div>
 
-            <ul className="flex flex-col gap-3.5 my-1">
-              <li className="overflow-hidden">
+            {/* Bullets: Centered container on mobile, left-aligned dot + text internally */}
+            <ul className="flex flex-col gap-3 my-1 items-start text-left max-w-[330px] sm:max-w-none mx-auto md:mx-0 w-full">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
@@ -156,9 +156,9 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 </div>
               </li>
 
-              <li className="overflow-hidden">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
@@ -166,19 +166,19 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 </div>
               </li>
 
-              <li className="overflow-hidden">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
-                  <span>Desenvolvimento focado em <strong className="font-semibold text-black">experiências premium</strong></span>
+                  <span>Desenvolvimento focado em <strong className="font-semibold text-black">experiências de alto ticket</strong></span>
                 </div>
               </li>
 
-              <li className="overflow-hidden">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
@@ -187,7 +187,7 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
               </li>
             </ul>
 
-            <div className="overflow-hidden mt-4">
+            <div className="overflow-hidden mt-2 sm:mt-3 w-full flex justify-center md:justify-start">
               <div
                 className="line-inner"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
@@ -195,7 +195,7 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 <ButtonWithIcon
                   text="Consultar portfólio"
                   variant="black"
-                  href="https://api.whatsapp.com/send?phone=5571992383038&text=Ol%C3%A1!%20Gostaria%20de%20consultar%20o%20portf%C3%B3lio%20do%20Harry%20Portugal!"
+                  href="https://harryportugal.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shadow-md"
@@ -203,7 +203,7 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
               </div>
             </div>
 
-            <div className="overflow-hidden mt-4 w-full">
+            <div className="overflow-hidden mt-2 sm:mt-3 w-full flex justify-center md:justify-start">
               <div
                 className="line-inner w-full"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
@@ -215,20 +215,19 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
         </div>
 
         {/* ── 2-ROW MARQUEE CAROUSEL (Edge-to-Edge) ── */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 my-4 md:my-8">
+        <div className="w-screen relative left-1/2 -translate-x-1/2 -my-2 sm:my-4 md:my-8">
           <TwoRowMarquee />
         </div>
 
         {/* ── MENTOR CARD 2 (Felipe Milhorança) ── */}
-        <div className="mentor-card grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
+        <div className="mentor-card grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 lg:gap-20 items-center">
           {/* Photo */}
           <div className="flex justify-center md:justify-start">
             <div
-              className="mentor-photo relative overflow-hidden"
+              className="mentor-photo relative overflow-hidden max-w-[270px] sm:max-w-[360px]"
               style={{
                 borderRadius: '18px',
                 width: '100%',
-                maxWidth: '360px',
                 aspectRatio: '3/4',
                 opacity: 0,
                 transform: 'scale(0.88) translateY(24px)',
@@ -245,20 +244,21 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
           </div>
 
           {/* Text + Button */}
-          <div className="mentor-text-col flex flex-col items-start gap-4">
+          <div className="mentor-text-col flex flex-col items-center text-center md:items-start md:text-left gap-3 sm:gap-4 w-full">
             <div className="overflow-hidden">
               <h2
-                className="line-inner text-[clamp(2rem,3.5vw,2.75rem)] font-normal leading-tight tracking-tight text-black"
+                className="line-inner text-[clamp(1.75rem,3.5vw,2.75rem)] font-normal leading-tight tracking-tight text-black text-center md:text-left"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
               >
                 Felipe Milhorança
               </h2>
             </div>
 
-            <ul className="flex flex-col gap-3.5 my-1">
-              <li className="overflow-hidden">
+            {/* Bullets: Centered container on mobile, left-aligned dot + text internally */}
+            <ul className="flex flex-col gap-3 my-1 items-start text-left max-w-[330px] sm:max-w-none mx-auto md:mx-0 w-full">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
@@ -266,9 +266,9 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 </div>
               </li>
 
-              <li className="overflow-hidden">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
@@ -276,9 +276,9 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 </div>
               </li>
 
-              <li className="overflow-hidden">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
@@ -286,18 +286,18 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 </div>
               </li>
 
-              <li className="overflow-hidden">
+              <li className="overflow-hidden w-full">
                 <div
-                  className="line-inner flex items-start gap-3 text-[clamp(1.05rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900"
+                  className="line-inner flex items-start justify-start gap-2.5 sm:gap-3 text-[clamp(0.95rem,1.8vw,1.25rem)] font-normal leading-snug text-neutral-900 text-left"
                   style={{ transform: 'translateY(100%)', willChange: 'transform' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 inline-block mt-2" />
-                  <span>Foco em <strong className="font-semibold text-black">posicionamento</strong> e <strong className="font-semibold text-black">projetos premium</strong></span>
+                  <span>Foco em <strong className="font-semibold text-black">posicionamento no topo de mercado</strong> e <strong className="font-semibold text-black">projetos de alto ticket</strong></span>
                 </div>
               </li>
             </ul>
 
-            <div className="overflow-hidden mt-4">
+            <div className="overflow-hidden mt-2 sm:mt-3 w-full flex justify-center md:justify-start">
               <div
                 className="line-inner"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
@@ -305,7 +305,7 @@ export const AboutHarrySection = React.forwardRef<HTMLElement>((_, ref) => {
                 <ButtonWithIcon
                   text="Consultar portfólio"
                   variant="black"
-                  href="https://api.whatsapp.com/send?phone=5571992383038&text=Ol%C3%A1!%20Gostaria%20de%20consultar%20o%20portf%C3%B3lio%20do%20Felipe%20Milhoran%C3%A7a!"
+                  href="https://harryportugal.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shadow-md"

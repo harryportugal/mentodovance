@@ -76,16 +76,13 @@ export const FinalHeroCtaSection: React.FC = () => {
         />
 
         {/* Main Heading */}
-        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-normal text-white leading-[1.1] tracking-tight">
-          <div>Chega de cobrar barato.</div>
-          <div>
-            É hora de fechar contratos de <span className="font-semibold text-white">R$ 10.000</span>.
-          </div>
+        <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-[68px] font-normal text-white leading-[1.15] md:leading-[1.1] tracking-tight [text-wrap:balance]">
+          Chega de cobrar barato. É hora de fechar contratos de <span className="font-semibold text-white">R$&nbsp;10.000</span>.
         </h2>
 
         {/* Subtitle */}
-        <p className="text-white text-sm sm:text-base md:text-lg font-normal max-w-[640px] mx-auto mt-3 leading-relaxed">
-          Você acabou de ver os resultados reais, a estrutura e o ecossistema. Continuar aceitando <strong className="font-semibold text-white">leilão de R$ 600 por site</strong> é uma escolha. Se você quer <strong className="font-semibold text-white">esmagar o amadorismo e dominar o mercado high-ticket</strong>, a sua decisão é agora.
+        <p className="text-white text-xs sm:text-base md:text-lg font-normal max-w-[640px] mx-auto mt-3 leading-relaxed [text-wrap:balance]">
+          Você acabou de ver os resultados reais, a estrutura e o ecossistema. Continuar aceitando <strong className="font-semibold text-white">leilão de R$&nbsp;600 por site</strong> é uma escolha. Se você quer <strong className="font-semibold text-white">esmagar o amadorismo e dominar o mercado high-ticket</strong>, a sua decisão é&nbsp;agora.
         </p>
 
         {/* Centralized CTA Button */}

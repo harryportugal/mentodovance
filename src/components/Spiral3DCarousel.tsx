@@ -36,7 +36,7 @@ function StudioEnvironment() {
       <directionalLight position={[3.2, 5, 5]} intensity={2.0} color="#ffffff" />
       <directionalLight position={[-3.2, 5, 5]} intensity={2.0} color="#ffffff" />
       <directionalLight position={[0, 5, -2]} intensity={0.8} color="#ffffff" />
-      <Environment resolution={1024} blur={0.03}>
+      <Environment resolution={512} blur={0.03}>
         <Lightformer form="rect" intensity={0.5} position={[0, 0, -10]} scale={[20, 20, 1]} color="white" />
         <Lightformer form="rect" intensity={2.5} position={[-3.2, 5, 5]} scale={[5, 10, 1]} rotation={[0, Math.PI / 4, 0]} color="white" />
         <Lightformer form="rect" intensity={2.5} position={[3.2, 5, 5]} scale={[5, 10, 1]} rotation={[0, -Math.PI / 4, 0]} color="white" />
@@ -73,15 +73,23 @@ function SpiralSceneContent({
   const ASPECT_16_10 = 16 / 10;
   const trackMultiplier = 3.0;
 
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const targetConfig = useMemo(
     () => ({
-      imageHeight: 4.5,
+      imageHeight: isMobile ? 3.6 : 4.5,
       gapRatio: 0.15,
-      spiralRadius: 8.8,
+      spiralRadius: isMobile ? 6.8 : 8.8,
       spiralTurns: 1.25,
-      spiralHeight: 16.5,
+      spiralHeight: isMobile ? 18.5 : 16.5,
     }),
-    []
+    [isMobile]
   );
 
   const [textures, setTextures] = useState<THREE.CanvasTexture[]>([]);
@@ -241,7 +249,7 @@ function SpiralSceneContent({
       <InteractiveMesh
         mouseRef={mouseRef}
         isPinnedRef={isPinnedRef}
-        scaleMultiplier={1.6}
+        scaleMultiplier={isMobile ? 1.25 : 1.6}
         scrollOffsetRef={currentOffsetRef}
       />
 
@@ -277,7 +285,16 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
   const scrollEndFiredRef = useRef(false);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldRenderCanvas, setShouldRenderCanvas] = useState(false);
   const displayImages = useMemo(() => images.slice(0, 9), [images]);
+
+  useEffect(() => {
+    // Defer WebGL Canvas mount to allow page load & intro loader to run buttery smooth
+    const timer = setTimeout(() => {
+      setShouldRenderCanvas(true);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleScrollEnd = useCallback(() => {
     if (scrollEndFiredRef.current || !onScrollEnd) return;
@@ -382,30 +399,32 @@ export const Spiral3DCarousel: React.FC<Spiral3DCarouselProps> = ({
           style={{ background: 'linear-gradient(to bottom, white 0%, white 5%, transparent 100%)' }}
         />
 
-        <Canvas
-          camera={{ position: [0, 0, 19.5], fov: 46 }}
-          dpr={[1, 2]}
-          gl={{
-            antialias: true,
-            alpha: true,
-            powerPreference: 'high-performance',
-            toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1.05,
-            stencil: false,
-          }}
-          className="relative w-full h-full block outline-none pointer-events-auto z-10"
-        >
-          <StudioEnvironment />
-          <SpiralSceneContent
-            displayImages={displayImages}
-            mouseRef={mouseRef}
-            targetOffsetRef={targetOffsetRef}
-            dragRotationRef={dragRotationRef}
-            baseRotation={baseRotation}
-            setIsLoading={setIsLoading}
-            isPinnedRef={isPinnedRef}
-          />
-        </Canvas>
+        {shouldRenderCanvas && (
+          <Canvas
+            camera={{ position: [0, 0, 19.5], fov: 46 }}
+            dpr={[1, 1.5]}
+            gl={{
+              antialias: true,
+              alpha: true,
+              powerPreference: 'high-performance',
+              toneMapping: THREE.ACESFilmicToneMapping,
+              toneMappingExposure: 1.05,
+              stencil: false,
+            }}
+            className="relative w-full h-full block outline-none pointer-events-auto z-10"
+          >
+            <StudioEnvironment />
+            <SpiralSceneContent
+              displayImages={displayImages}
+              mouseRef={mouseRef}
+              targetOffsetRef={targetOffsetRef}
+              dragRotationRef={dragRotationRef}
+              baseRotation={baseRotation}
+              setIsLoading={setIsLoading}
+              isPinnedRef={isPinnedRef}
+            />
+          </Canvas>
+        )}
 
         {isLoading && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-20 pointer-events-none">

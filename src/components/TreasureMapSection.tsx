@@ -109,7 +109,7 @@ export const TreasureMapSection = () => {
             ------------------------------------------------------------- */}
         <div
           ref={trail1ContainerRef}
-          className="w-full flex justify-center h-[450px] sm:h-[580px] md:h-[680px] pointer-events-none pt-0 pb-1"
+          className="w-full flex justify-center h-[340px] sm:h-[580px] md:h-[680px] pointer-events-none pt-0 pb-1"
         >
           <svg
             className="w-full h-full max-w-2xl"
@@ -155,28 +155,28 @@ export const TreasureMapSection = () => {
             STEP 1: POSITIONING & VANCE CLASS (HTML node)
             ------------------------------------------------------------- */}
         <div ref={node1Ref} className="w-full max-w-3xl relative z-10 text-center my-4 md:my-6 pointer-events-auto">
-          <CopyText startTrigger="top 85%" stagger={0.15} className="relative py-2 px-4 text-center">
+          <CopyText startTrigger="top 85%" stagger={0.15} className="relative py-2 px-2 sm:px-4 text-center">
             <div className="overflow-hidden py-1">
-              <p className="line-inner text-2xl sm:text-3xl md:text-4xl font-medium text-black leading-relaxed tracking-tight max-w-2xl mx-auto" style={{ transform: 'translateY(110%)' }}>
+              <p className="line-inner text-xl sm:text-3xl md:text-4xl font-medium text-black leading-relaxed tracking-tight max-w-2xl mx-auto [text-wrap:balance]" style={{ transform: 'translateY(110%)' }}>
                 A diferença entre um freelancer que cobra{' '}
-                <span className="inline-block px-2.5 py-0.5 rounded-lg bg-black/5 text-black/50 font-semibold line-through decoration-black/60 decoration-2">
-                  R$650
+                <span className="inline-block px-2 sm:px-2.5 py-0.5 rounded-lg bg-black/5 text-black/50 font-semibold line-through decoration-black/60 decoration-2 whitespace-nowrap">
+                  R$&nbsp;650
                 </span>{' '}
                 e outro que cobra{' '}
-                <span className="inline-block px-3 py-0.5 rounded-lg bg-black text-white font-bold">
-                  R$10.000
+                <span className="inline-block px-2.5 sm:px-3 py-0.5 rounded-lg bg-black text-white font-bold whitespace-nowrap">
+                  R$&nbsp;10.000
                 </span>{' '}
-                raramente é técnica.
+                raramente é&nbsp;técnica.
               </p>
             </div>
 
             <div className="overflow-hidden py-1 mt-6 pt-6 border-t border-black/10">
-              <p className="line-inner text-xl sm:text-2xl md:text-3xl font-normal text-black/85 leading-relaxed tracking-tight max-w-2xl mx-auto" style={{ transform: 'translateY(110%)' }}>
+              <p className="line-inner text-lg sm:text-2xl md:text-3xl font-normal text-black/85 leading-relaxed tracking-tight max-w-2xl mx-auto [text-wrap:balance]" style={{ transform: 'translateY(110%)' }}>
                 É <strong className="font-bold text-black">posicionamento</strong>,{' '}
                 <strong className="font-bold text-black">portfólio</strong> e{' '}
                 <strong className="font-bold text-black">percepção</strong>. E é exatamente isso que você vai construir na{' '}
-                <span className="font-bold text-black border-b-2 border-black">
-                  Vance Class
+                <span className="font-bold text-black border-b-2 border-black whitespace-nowrap">
+                  Vance&nbsp;Class
                 </span>
                 .
               </p>
@@ -190,7 +190,7 @@ export const TreasureMapSection = () => {
             ------------------------------------------------------------- */}
         <div
           ref={trail2ContainerRef}
-          className="w-full flex justify-center h-[400px] sm:h-[520px] md:h-[620px] pointer-events-none pt-4 pb-1"
+          className="w-full flex justify-center h-[300px] sm:h-[520px] md:h-[620px] pointer-events-none pt-4 pb-1"
         >
           <svg
             className="w-full h-full max-w-2xl"

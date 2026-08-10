@@ -37,7 +37,7 @@ export const AnimatedChatInput = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full max-w-5xl mx-auto mt-[120px] px-4 text-left overflow-visible relative z-30">
+    <div ref={containerRef} className="w-full max-w-5xl mx-auto mt-6 sm:mt-[80px] md:mt-[120px] px-2 sm:px-4 text-left overflow-visible relative z-30">
       <div ref={cardRef} style={{ transform: 'translateY(45px)' }}>
         <ClaudeChatInput />
       </div>

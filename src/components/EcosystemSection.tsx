@@ -150,7 +150,7 @@ export const EcosystemSection = React.forwardRef<HTMLElement>((_, ref) => {
         else if (ref) (ref as React.MutableRefObject<HTMLElement | null>).current = node;
       }}
       id="ecosystem"
-      className="w-full py-20 md:py-28 px-6 md:px-16 lg:px-24 selection:bg-white selection:text-black transition-colors"
+      className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-16 lg:px-24 selection:bg-white selection:text-black transition-colors"
       style={{ backgroundColor: '#ffffff', color: '#000000' }}
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col gap-14 md:gap-16">
@@ -158,20 +158,20 @@ export const EcosystemSection = React.forwardRef<HTMLElement>((_, ref) => {
         <div ref={headerRef} className="max-w-3xl mx-auto text-center flex flex-col gap-4">
           <div className="overflow-hidden py-1">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-black leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(1.75rem,3.8vw,3.2rem)] font-normal text-black leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Tudo o que gostaríamos de ter quando começamos.
+              Tudo o que gostaríamos de ter quando&nbsp;começamos.
             </h2>
           </div>
 
           <div className="overflow-hidden py-1">
             <p
-              className="line-inner text-[clamp(1.05rem,1.8vw,1.25rem)] text-neutral-800 font-normal max-w-2xl mx-auto leading-relaxed"
+              className="line-inner text-[clamp(1rem,1.8vw,1.25rem)] text-neutral-800 font-normal max-w-2xl mx-auto leading-relaxed [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
               A Vance Class não é só uma mentoria. Você entra para um{' '}
-              <strong className="font-semibold text-black">ecossistema criado para acelerar</strong> a sua evolução como webdesigner.
+              <strong className="font-semibold text-black">ecossistema criado para acelerar</strong> a sua evolução como&nbsp;webdesigner.
             </p>
           </div>
         </div>

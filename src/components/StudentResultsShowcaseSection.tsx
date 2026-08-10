@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Play, CheckCircle2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,7 +47,7 @@ const COMPARISONS: ComparisonItem[] = [
     beforeTitle: 'Template Pronto',
     beforePrice: 'R$ 800',
     beforeDesc: <>Propostas disputadas em <strong className="font-semibold text-white">leilão de preço</strong> no mercado comum.</>,
-    afterTitle: 'Plataforma Premium Vance',
+    afterTitle: 'Plataforma High-Ticket Vance',
     afterPrice: 'R$ 12.000',
     afterDesc: <><strong className="font-semibold text-white">Posicionamento internacional</strong> onde o próprio <strong className="font-semibold text-white">portfólio vende o projeto</strong>.</>,
   },
@@ -173,59 +172,43 @@ export const StudentResultsShowcaseSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="student-results"
-      className="w-full py-20 md:py-28 px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
+      className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col gap-16 md:gap-24">
         {/* ── Section Header ── */}
         <div ref={headerRef} className="max-w-3xl mx-auto text-center flex flex-col gap-3">
           <div className="overflow-hidden py-1">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(1.75rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Não acredite na gente. Veja quem já passou por aqui.
+              Não acredite na gente. Veja quem já passou por&nbsp;aqui.
             </h2>
           </div>
         </div>
 
-        {/* ── Showcase Testimonial Feature (Vídeo / Print Grande) ── */}
+        {/* ── Showcase Testimonial Feature (Monocromático, Cor Sólida, Sem Pill, Sem Contorno/Degradê/Verde) ── */}
         <div
           ref={showcaseCardRef}
-          className="w-full bg-[#0e0e0e] rounded-3xl p-6 sm:p-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
+          className="w-full bg-[#0e0e0e] rounded-3xl p-6 sm:p-8 md:p-12 flex flex-col gap-6 sm:gap-8"
         >
-          {/* Video / Showcase Media Mockup Container */}
-          <div className="w-full lg:w-1/2 aspect-[16/10] rounded-2xl bg-[#141414] p-6 relative overflow-hidden flex flex-col justify-between group">
-            {/* Play Button Center Overlay */}
-            <div className="relative z-10 my-auto flex items-center justify-center">
-              <div className="w-14 h-14 rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300 flex items-center justify-center text-white shadow-2xl backdrop-blur-sm cursor-pointer hover:scale-105">
-                <Play className="w-6 h-6 fill-white translate-x-0.5" />
-              </div>
-            </div>
-
-            {/* Inner Video Mockup Details */}
-            <div className="relative z-10 flex items-center justify-between text-xs text-white/90 font-normal">
-              <span>Showcase de Aluno</span>
-              <span className="flex items-center gap-1 text-white">
-                <CheckCircle2 className="w-3.5 h-3.5 text-white" /> Verificado
-              </span>
-            </div>
-          </div>
-
           {/* Quote & Student Information */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center gap-6">
-            <blockquote className="text-xl sm:text-2xl lg:text-3xl font-normal text-white leading-snug tracking-tight">
-              “Antes eu cobrava <strong className="font-semibold text-white">R$ 600 por projeto</strong>. Hoje fecho contratos de <strong className="font-semibold text-white">R$ 10.000</strong> sem que o cliente questione o preço.”
+          <div className="flex flex-col gap-6 sm:gap-8">
+            <blockquote className="text-xl sm:text-3xl lg:text-4xl font-normal text-white leading-relaxed tracking-tight [text-wrap:balance]">
+              “Antes eu cobrava <strong className="font-semibold text-white">R$ 600 por projeto</strong>. Hoje fecho contratos de <strong className="font-semibold text-white">R$ 10.000</strong> sem que o cliente questione o&nbsp;preço.”
             </blockquote>
 
-            <div className="flex items-center gap-3.5 pt-2">
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white font-semibold text-base shrink-0">
-                LV
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base font-semibold text-white tracking-tight">
+            <div className="flex items-center gap-3.5 sm:gap-4 pt-1 sm:pt-2">
+              <img
+                src="/favicon.svg"
+                alt="Lucas Vance"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-contain shrink-0 bg-white/10 p-2 sm:p-2.5"
+              />
+              <div className="flex flex-col gap-0.5">
+                <span className="text-lg font-semibold text-white tracking-tight">
                   Lucas Vance
                 </span>
-                <span className="text-xs text-white/90 font-normal">
+                <span className="text-sm text-white font-normal">
                   @lucaswebdesign • Aluno Vance Class
                 </span>
               </div>
@@ -243,7 +226,7 @@ export const StudentResultsShowcaseSection: React.FC = () => {
               <span className="text-2xl sm:text-3xl lg:text-[34px] font-normal text-white tracking-tight whitespace-nowrap leading-none">
                 {metric.value}
               </span>
-              <span className="text-xs sm:text-sm text-white/90 font-normal leading-snug">
+              <span className="text-xs sm:text-sm text-white font-normal leading-snug">
                 {metric.label}
               </span>
             </div>
@@ -256,18 +239,18 @@ export const StudentResultsShowcaseSection: React.FC = () => {
           <div ref={comparisonHeaderRef} className="max-w-3xl mx-auto text-center flex flex-col gap-3">
             <div className="overflow-hidden py-1">
               <h3
-                className="line-inner text-[clamp(1.8rem,3.2vw,2.6rem)] font-normal text-white leading-tight tracking-tight"
+                className="line-inner text-[clamp(1.8rem,3.2vw,2.6rem)] font-normal text-white leading-tight tracking-tight [text-wrap:balance]"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
               >
-                Do primeiro projeto ao portfólio premium.
+                Do primeiro projeto ao portfólio de alto&nbsp;ticket.
               </h3>
             </div>
             <div className="overflow-hidden py-1">
               <p
-                className="line-inner text-base sm:text-lg text-white/90 font-normal max-w-xl mx-auto leading-relaxed"
+                className="line-inner text-base sm:text-lg text-white font-normal max-w-xl mx-auto leading-relaxed [text-wrap:balance]"
                 style={{ transform: 'translateY(100%)', willChange: 'transform' }}
               >
-                A evolução prática que transforma <strong className="font-semibold text-white">trabalhos simples</strong> em <strong className="font-semibold text-white">produções de alto valor</strong>.
+                A evolução prática que transforma <strong className="font-semibold text-white">trabalhos simples</strong> em <strong className="font-semibold text-white">produções de alto&nbsp;valor</strong>.
               </p>
             </div>
           </div>
@@ -284,7 +267,7 @@ export const StudentResultsShowcaseSection: React.FC = () => {
                   <span className="text-sm font-semibold text-white tracking-tight">
                     {comp.studentName}
                   </span>
-                  <span className="text-xs text-white/80 font-normal">
+                  <span className="text-xs text-white font-normal">
                     {comp.studentRole}
                   </span>
                 </div>
@@ -293,7 +276,7 @@ export const StudentResultsShowcaseSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Before Box */}
                   <div className="bg-[#141414] rounded-2xl p-4 flex flex-col justify-between gap-3">
-                    <div className="flex items-center justify-between text-xs text-white/80">
+                    <div className="flex items-center justify-between text-xs text-white">
                       <span>Antes</span>
                       <span className="font-semibold text-white">{comp.beforePrice}</span>
                     </div>
@@ -301,14 +284,14 @@ export const StudentResultsShowcaseSection: React.FC = () => {
                       <h4 className="text-sm font-medium text-white tracking-tight">
                         {comp.beforeTitle}
                       </h4>
-                      <p className="text-xs text-white/80 leading-relaxed font-normal">
+                      <p className="text-xs text-white leading-relaxed font-normal">
                         {comp.beforeDesc}
                       </p>
                     </div>
                   </div>
 
                   {/* After Box */}
-                  <div className="bg-white/10 rounded-2xl p-4 flex flex-col justify-between gap-3">
+                  <div className="bg-[#1a1a1a] rounded-2xl p-4 flex flex-col justify-between gap-3">
                     <div className="flex items-center justify-between text-xs text-white font-medium">
                       <span>Depois (Vance)</span>
                       <span className="font-semibold text-white">{comp.afterPrice}</span>
@@ -317,7 +300,7 @@ export const StudentResultsShowcaseSection: React.FC = () => {
                       <h4 className="text-sm font-semibold text-white tracking-tight">
                         {comp.afterTitle}
                       </h4>
-                      <p className="text-xs text-white/90 leading-relaxed font-normal">
+                      <p className="text-xs text-white leading-relaxed font-normal">
                         {comp.afterDesc}
                       </p>
                     </div>

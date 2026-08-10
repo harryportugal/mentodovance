@@ -119,31 +119,31 @@ export const EvolutionStepsSection = React.forwardRef<HTMLElement>((_, ref) => {
         <div ref={headerRef} className="max-w-3xl mx-auto text-center">
           <div className="overflow-hidden py-1 mb-3">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-black leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(1.75rem,3.8vw,3.2rem)] font-normal text-black leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Sua evolução em 5 etapas
+              Sua evolução em 5&nbsp;etapas
             </h2>
           </div>
 
           <div className="overflow-hidden py-1 mb-4">
             <h3
-              className="line-inner text-[clamp(1.2rem,2.2vw,1.5rem)] font-medium text-neutral-900 leading-tight tracking-tight"
+              className="line-inner text-[clamp(1.2rem,2.2vw,1.5rem)] font-medium text-neutral-900 leading-tight tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Uma mentoria. Cinco transformações.
+              Uma mentoria. Cinco&nbsp;transformações.
             </h3>
           </div>
 
           <div className="overflow-hidden py-1">
             <p
-              className="line-inner text-[clamp(1.05rem,1.8vw,1.25rem)] text-neutral-800 font-normal max-w-2xl mx-auto leading-relaxed"
+              className="line-inner text-[clamp(1rem,1.8vw,1.25rem)] text-neutral-800 font-normal max-w-2xl mx-auto leading-relaxed [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
               Você não vai assistir aulas aleatórias. Vai seguir um método criado para transformar um{' '}
               <strong className="font-semibold">webdesigner comum</strong> em um profissional capaz de entregar{' '}
-              <strong className="font-semibold">projetos premium</strong> e cobrar{' '}
-              <strong className="font-semibold">tickets altos</strong>.
+              <strong className="font-semibold">projetos de alto ticket</strong> e cobrar{' '}
+              <strong className="font-semibold">tickets&nbsp;altos</strong>.
             </p>
           </div>
         </div>

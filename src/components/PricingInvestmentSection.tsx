@@ -106,25 +106,25 @@ export const PricingInvestmentSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="investment"
-      className="w-full py-20 md:py-28 px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
+      className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-16 lg:px-24 bg-black text-white font-sans select-none"
     >
-      <div className="w-full max-w-4xl mx-auto flex flex-col gap-14 md:gap-18">
+      <div className="w-full max-w-4xl mx-auto flex flex-col gap-12 sm:gap-14 md:gap-18">
         {/* ── Section Header ── */}
         <div ref={headerRef} className="max-w-3xl mx-auto text-center flex flex-col gap-3">
           <div className="overflow-hidden py-1">
             <h2
-              className="line-inner text-[clamp(2rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight"
+              className="line-inner text-[clamp(1.75rem,3.8vw,3.2rem)] font-normal text-white leading-[1.18] tracking-tight [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Quanto custa parar de disputar leilão de preço?
+              Quanto custa parar de disputar leilão de&nbsp;preço?
             </h2>
           </div>
           <div className="overflow-hidden py-1">
             <p
-              className="line-inner text-base sm:text-lg text-white font-normal max-w-2xl mx-auto leading-relaxed"
+              className="line-inner text-base sm:text-lg text-white font-normal max-w-2xl mx-auto leading-relaxed [text-wrap:balance]"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              <strong className="font-semibold text-white">5 encontros intensivos</strong> para esmagar o amadorismo e transformar radicalmente a forma como você <strong className="font-semibold text-white">constrói, entrega e vende projetos de R$ 10.000+</strong>.
+              <strong className="font-semibold text-white">5 encontros intensivos</strong> para esmagar o amadorismo e transformar radicalmente a forma como você <strong className="font-semibold text-white">constrói, entrega e vende projetos de R$&nbsp;10.000+</strong>.
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ export const PricingInvestmentSection: React.FC = () => {
         {/* ── Central Premium Pricing Card ── */}
         <div
           ref={pricingCardRef}
-          className="w-full bg-[#0e0e0e] rounded-3xl p-7 sm:p-12 flex flex-col gap-8"
+          className="w-full bg-[#0e0e0e] rounded-3xl p-5 sm:p-7 md:p-12 flex flex-col gap-6 sm:gap-8"
         >
           {/* Card Top Row: Title & Price + Quick Highlights Grid */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -141,18 +141,18 @@ export const PricingInvestmentSection: React.FC = () => {
                 VANCE CLASS
               </span>
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-normal text-white tracking-tight leading-none">
+                <span className="text-3xl sm:text-5xl md:text-6xl font-normal text-white tracking-tight leading-none">
                   R$ 3.000
                 </span>
               </div>
             </div>
 
             {/* Quick Highlights Pills */}
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 shrink-0">
               {QUICK_HIGHLIGHTS.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#141414] rounded-xl px-3.5 py-2 text-xs sm:text-sm font-normal text-white flex items-center gap-2"
+                  className="bg-[#141414] rounded-xl px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-normal text-white flex items-center gap-2 min-h-[44px] sm:min-h-0"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
                   <span>{item}</span>
@@ -189,7 +189,7 @@ export const PricingInvestmentSection: React.FC = () => {
               className="line-inner text-base sm:text-lg md:text-xl text-white font-normal leading-relaxed text-balance"
               style={{ transform: 'translateY(100%)', willChange: 'transform' }}
             >
-              Um único projeto fechado a <strong className="font-semibold text-white">R$ 10.000</strong> já paga este investimento <strong className="font-semibold text-white">mais de 3 vezes</strong> — e transforma permanentemente o seu valor de mercado.
+              Um único projeto fechado a <strong className="font-semibold text-white">R$ 5.000</strong> já paga este investimento <strong className="font-semibold text-white">quase 2 vezes</strong> — e transforma permanentemente o seu valor de mercado.
             </p>
           </div>
 

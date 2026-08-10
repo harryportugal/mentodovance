@@ -300,12 +300,12 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
                 bg-black font-sans antialiased text-left
                 ${hasContent ? 'shadow-[0_14px_40px_rgba(0,0,0,0.45)] border-white/25' : 'shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-white/15'}
             `}>
-                <div className="flex flex-col px-6 pt-5 pb-4 gap-4 text-left">
+                <div className="flex flex-col px-4 sm:px-6 pt-4 sm:pt-5 pb-3 sm:pb-4 gap-3 sm:gap-4 text-left">
 
                     {/* Área de Input com Texto Digitado */}
                     <div className="relative mb-1 text-left" ref={inputAreaRef}>
-                        <div className="max-h-96 w-full overflow-y-auto font-sans break-words min-h-[3rem] pl-1 text-left">
-                            <div className="w-full text-[19px] sm:text-[20px] leading-relaxed font-normal antialiased py-0 min-h-[1.5em] relative text-left">
+                        <div className="max-h-96 w-full overflow-y-auto font-sans break-words min-h-[2.8rem] sm:min-h-[3rem] pl-0.5 sm:pl-1 text-left">
+                            <div className="w-full text-base sm:text-[20px] leading-relaxed font-normal antialiased py-0 min-h-[1.5em] relative text-left">
                                 {/* Camada do texto animado */}
                                 <span
                                     className="text-white relative inline-flex items-center text-left"

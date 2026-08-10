@@ -92,7 +92,7 @@ const HangingNote = () => {
           ref={imgRef}
           src="/nota.png"
           alt="Nota no gancho"
-          className="h-[340px] sm:h-[460px] md:h-[560px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.18)]"
+          className="h-[200px] sm:h-[460px] md:h-[560px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.18)]"
           style={{ transform: 'translateY(-150%)', opacity: 0, transformOrigin: '50% 0%' }}
         />
       </div>
@@ -200,33 +200,18 @@ export const PerspectiveGridSection = () => {
       />
 
       <div className="relative w-full z-10">
-        <CopyText startTrigger="top 90%" delay={0.1} className="relative pt-2 md:pt-4 z-10 max-w-4xl mx-auto text-center px-6 pointer-events-auto">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.15] text-white">
+        <CopyText startTrigger="top 90%" delay={0.1} className="relative pt-2 md:pt-4 z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 pointer-events-auto">
+          <h2 className="text-2xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.15] text-white [text-wrap:balance]">
             <span className="block overflow-hidden py-1">
               <span className="line-inner block">
-                Projetos de <span className="font-semibold underline decoration-current underline-offset-8">R$10.000</span>
-              </span>
-            </span>
-            <span className="block overflow-hidden py-1">
-              <span className="line-inner block">
-                exigem posicionamento visual
-              </span>
-            </span>
-            <span className="block overflow-hidden py-1">
-              <span className="line-inner block">
-                cinematográfico.
+                Projetos de <span className="font-semibold underline decoration-current underline-offset-8">R$&nbsp;10.000</span> exigem posicionamento visual&nbsp;cinematográfico.
               </span>
             </span>
           </h2>
-          <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-xl mx-auto mt-4 font-normal leading-relaxed">
+          <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-xl mx-auto mt-4 font-normal leading-relaxed [text-wrap:balance]">
             <span className="block overflow-hidden py-1">
               <span className="line-inner block">
-                Enquanto outros disputam trocados, seu portfólio gera
-              </span>
-            </span>
-            <span className="block overflow-hidden py-1">
-              <span className="line-inner block">
-                notificações diárias de pagamentos de alto valor.
+                Enquanto outros disputam trocados, seu portfólio gera notificações diárias de pagamentos de&nbsp;alto&nbsp;valor.
               </span>
             </span>
           </p>
@@ -275,21 +260,16 @@ export const PerspectiveGridSection = () => {
       <ImageMouseTrail className="relative z-40 w-full overflow-visible">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 mt-36 md:mt-48 pb-24 pointer-events-auto">
           <CopyText startTrigger="top 75%" stagger={0.25} delay={0.1} className="text-center mb-8 md:mb-14">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-black leading-[1.15]">
+            <h2 className="text-2xl sm:text-5xl md:text-6xl font-normal tracking-tight text-black leading-[1.15] [text-wrap:balance]">
               <span className="block overflow-hidden py-1">
                 <span className="line-inner block">
-                  Você não está perdendo clientes.
-                </span>
-              </span>
-              <span className="block overflow-hidden py-1">
-                <span className="line-inner block font-semibold text-black">
-                  Você está parecendo barato.
+                  Você não está perdendo clientes. <span className="font-semibold text-black">Você está parecendo&nbsp;barato.</span>
                 </span>
               </span>
             </h2>
           </CopyText>
 
-          <div className="relative w-full h-[600px] sm:h-[700px] md:h-[800px] max-w-5xl mx-auto my-8">
+          <div className="relative w-full h-[460px] sm:h-[700px] md:h-[800px] max-w-5xl mx-auto my-2 sm:my-8">
             <HangingNote />
 
             {[
@@ -305,25 +285,25 @@ export const PerspectiveGridSection = () => {
               const total = arr.length;
               const angleDeg = -90 + (idx * 360) / total;
               const angleRad = (angleDeg * Math.PI) / 180;
-              const rx = 39;
-              const ry = 37;
+              const rx = 34;
+              const ry = 36;
 
               const left = 50 + rx * Math.cos(angleRad);
               const top = 50 + ry * Math.sin(angleRad);
               const delay = 0.15 + idx * 0.09;
 
               let alignClass = 'text-center';
-              if (left > 60) alignClass = 'text-left';
-              else if (left < 40) alignClass = 'text-right';
+              if (left > 55) alignClass = 'text-left';
+              else if (left < 45) alignClass = 'text-right';
 
               return (
                 <div
                   key={idx}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2 w-[180px] sm:w-[220px] md:w-[260px] z-10"
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 w-[115px] sm:w-[220px] md:w-[260px] z-10"
                   style={{ left: `${left}%`, top: `${top}%` }}
                 >
                   <CopyText startTrigger="top 85%" delay={delay} className={alignClass}>
-                    <p className="overflow-hidden py-1 text-sm sm:text-base md:text-lg font-normal text-black/85 leading-snug">
+                    <p className="overflow-hidden py-0.5 text-[10.5px] sm:text-base md:text-lg font-normal text-black/85 leading-tight sm:leading-snug">
                       <span className="line-inner block">{phrase}</span>
                     </p>
                   </CopyText>
@@ -332,20 +312,22 @@ export const PerspectiveGridSection = () => {
             })}
           </div>
 
-          <CopyText startTrigger="top 85%" delay={0.9} className="text-center mt-12 md:mt-16">
-            <div className="overflow-hidden py-1">
-              <h3 className="line-inner text-6xl sm:text-8xl md:text-[7.5rem] lg:text-[9rem] font-semibold text-black tracking-tight drop-shadow-sm leading-tight md:leading-none flex flex-wrap items-center justify-center">
-                <span>Por quê?</span>
-                <span className="block sm:inline-block font-normal text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-zinc-400 text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] ml-0 sm:ml-4 mt-2 sm:mt-0">
-                  Você hoje:
-                </span>
-              </h3>
-            </div>
-          </CopyText>
+          <div className="pt-8 sm:pt-0">
+            <CopyText startTrigger="top 85%" delay={0.9} className="text-center mt-12 md:mt-16">
+              <div className="overflow-hidden py-1">
+                <h3 className="line-inner text-5xl sm:text-8xl md:text-[7.5rem] lg:text-[9rem] font-semibold text-black tracking-tight drop-shadow-sm leading-tight md:leading-none flex flex-wrap items-center justify-center">
+                  <span>Por quê?</span>
+                  <span className="block sm:inline-block font-normal text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-zinc-400 text-3xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] ml-0 sm:ml-4 mt-1 sm:mt-0">
+                    Você hoje:
+                  </span>
+                </h3>
+              </div>
+            </CopyText>
 
-          {/* Animated AI Chat Input Component */}
-          <div className="mt-8 md:mt-12">
-            <AnimatedChatInput />
+            {/* Animated AI Chat Input Component */}
+            <div className="mt-8 md:mt-12">
+              <AnimatedChatInput />
+            </div>
           </div>
         </div>
       </ImageMouseTrail>
