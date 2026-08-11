@@ -26,12 +26,33 @@ export function App() {
   const heroContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+
+    if (isTouchDevice) {
+      ScrollTrigger.normalizeScroll({
+        lockAxis: false,
+        momentum: (self: any) => Math.min(3, self.getVelocity() * 0.003),
+      });
+      const handleNativeScroll = () => {
+        ScrollTrigger.update();
+      };
+      window.addEventListener('scroll', handleNativeScroll, { passive: true });
+      const refreshTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 300);
+      return () => {
+        window.removeEventListener('scroll', handleNativeScroll);
+        clearTimeout(refreshTimer);
+      };
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t) => 1 - Math.pow(1 - t, 4),
       smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.4,
+      wheelMultiplier: 0.85,
       infinite: false,
     });
 
@@ -41,12 +62,7 @@ export function App() {
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 400);
-
     return () => {
-      clearTimeout(refreshTimer);
       gsap.ticker.remove(onTick);
       lenis.destroy();
     };
