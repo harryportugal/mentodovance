@@ -14,6 +14,9 @@ gsap.config({
   force3D: true,
   nullTargetWarn: false,
 });
+ScrollTrigger.config({
+  ignoreMobileResize: true,
+});
 gsap.defaults({
   overwrite: 'auto',
 });
@@ -23,12 +26,29 @@ export function App() {
   const heroContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+
+    if (isTouchDevice) {
+      const handleNativeScroll = () => {
+        ScrollTrigger.update();
+      };
+      window.addEventListener('scroll', handleNativeScroll, { passive: true });
+      const refreshTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 300);
+      return () => {
+        window.removeEventListener('scroll', handleNativeScroll);
+        clearTimeout(refreshTimer);
+      };
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => 1 - Math.pow(1 - t, 4),
       smoothWheel: true,
       wheelMultiplier: 0.85,
-      touchMultiplier: 1.2,
       infinite: false,
     });
 
