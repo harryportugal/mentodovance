@@ -84,6 +84,14 @@ export function ImageMouseTrail({
   };
 
   const handleOnMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    // Disable mouse trail effect on mobile screens and touch devices
+    if (
+      typeof window !== 'undefined' &&
+      (window.innerWidth < 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0)
+    ) {
+      return;
+    }
+
     let clientX = 0;
     let clientY = 0;
 
