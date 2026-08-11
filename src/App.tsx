@@ -31,7 +31,9 @@ export function App() {
       ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
 
     if (isTouchDevice) {
-      ScrollTrigger.normalizeScroll(true);
+      ScrollTrigger.normalizeScroll({
+        lockAxis: false,
+      });
       const handleNativeScroll = () => {
         ScrollTrigger.update();
       };
