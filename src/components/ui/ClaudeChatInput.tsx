@@ -302,13 +302,13 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
             `}>
                 <div className="flex flex-col px-4 sm:px-6 pt-4 sm:pt-5 pb-3 sm:pb-4 gap-2 sm:gap-3 text-left h-full justify-between">
 
-                    {/* Área de Input com Texto Digitado — Fixed Height */}
-                    <div className="relative mb-1 text-left h-[68px] sm:h-[76px] flex items-center overflow-hidden" ref={inputAreaRef}>
+                    {/* Área de Input com Texto Digitado — Fixed Height Top Aligned */}
+                    <div className="relative mb-1 text-left h-[68px] sm:h-[76px] flex items-start pt-0.5 overflow-hidden" ref={inputAreaRef}>
                         <div className="w-full font-sans break-words pl-0.5 sm:pl-1 text-left max-h-full overflow-hidden">
                             <div className="w-full text-base sm:text-[19px] leading-snug font-normal antialiased py-0 relative text-left">
                                 {/* Camada do texto animado */}
                                 <span
-                                    className="text-white relative inline-flex items-center text-left"
+                                    className="text-white relative inline-flex items-start text-left"
                                     style={{ minHeight: '1.4em' }}
                                 >
                                     {typedText || '\u200B'}
@@ -319,7 +319,7 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
 
                                 {/* Placeholder fading */}
                                 <span
-                                    className="text-zinc-500 absolute inset-0 flex items-center pl-1 pointer-events-none select-none text-left"
+                                    className="text-zinc-500 absolute inset-0 flex items-start pt-0.5 pl-1 pointer-events-none select-none text-left"
                                     style={{
                                         opacity: hasContent ? 0 : placeholderOpacity,
                                         transition: 'opacity 300ms ease',
