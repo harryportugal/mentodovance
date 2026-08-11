@@ -108,8 +108,8 @@ export const PerspectiveGridSection = () => {
 
   const itemRandoms = useMemo(() => {
     return pixNotifications.map((_, i) => ({
-      zStart: -250 - i * 120,
-      yEnd: -420 + i * 40,
+      zStart: -350 - i * 150,
+      yEnd: -480 + i * 45,
     }));
   }, []);
 
@@ -124,7 +124,7 @@ export const PerspectiveGridSection = () => {
     if (!gridItems.length) return;
 
     grid.style.setProperty('--grid-width', '100%');
-    grid.style.setProperty('--perspective', '1400px');
+    grid.style.setProperty('--perspective', '1600px');
     grid.style.setProperty('--grid-columns', '1');
     grid.style.setProperty('--grid-gap', '0.75rem');
 
@@ -136,12 +136,9 @@ export const PerspectiveGridSection = () => {
         defaults: { ease: 'none', force3D: true },
         scrollTrigger: {
           trigger: container,
-          start: 'top top',
-          end: '+=160%',
-          pin: true,
-          pinSpacing: true,
+          start: 'top 85%',
+          end: 'bottom 20%',
           scrub: 0.5,
-          anticipatePin: 1,
           fastScrollEnd: true,
           preventOverlaps: true,
         },
@@ -171,16 +168,16 @@ export const PerspectiveGridSection = () => {
       });
 
       timeline.to(gridWrap, {
-        z: 3200,
+        z: 5800,
         scale: 1.05,
         force3D: true,
       }, 0);
 
       timeline.to(whiteOverlay, {
         opacity: 1,
-        duration: 0.2,
+        duration: 0.08,
         ease: 'power1.out',
-      }, 0.35);
+      }, 0.18);
     }, container);
 
     const refreshTimer = setTimeout(() => {
@@ -199,7 +196,7 @@ export const PerspectiveGridSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative z-30 min-h-screen bg-black text-white pt-4 md:pt-8 pb-32 flex flex-col items-center justify-start overflow-visible"
+      className="relative z-30 min-h-[230vh] bg-black text-white pt-4 md:pt-8 pb-32 flex flex-col items-center justify-start overflow-visible"
     >
       <div
         ref={whiteOverlayRef}
