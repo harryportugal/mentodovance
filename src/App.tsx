@@ -33,7 +33,7 @@ export function App() {
     if (isTouchDevice) {
       ScrollTrigger.normalizeScroll({
         lockAxis: false,
-        momentum: (self: any) => Math.min(3, self.getVelocity() * 0.003),
+        momentum: (self: any) => Math.min(8, self.getVelocity() * 0.015),
       });
       const handleNativeScroll = () => {
         ScrollTrigger.update();
