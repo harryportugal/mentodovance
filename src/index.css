@@ -122,9 +122,9 @@ body {
   transform-style: preserve-3d;
   will-change: transform;
   overflow: visible;
-  /* Explicit GPU promotion */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  /* WebKit Mobile 3D Preservation */
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
 
 /* Notification Cards */

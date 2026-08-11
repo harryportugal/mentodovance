@@ -109,8 +109,8 @@ export const PerspectiveGridSection = () => {
   const itemRandoms = useMemo(() => {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     return pixNotifications.map((_, i) => ({
-      zStart: isMobile ? -200 - i * 95 : -350 - i * 150,
-      yEnd: isMobile ? -360 + i * 35 : -480 + i * 45,
+      zStart: isMobile ? -120 - i * 60 : -350 - i * 150,
+      yEnd: isMobile ? -280 + i * 30 : -480 + i * 45,
     }));
   }, []);
 
@@ -125,8 +125,8 @@ export const PerspectiveGridSection = () => {
     if (!gridItems.length) return;
 
     const isMobile = window.innerWidth < 768;
-    const perspective = isMobile ? '1000px' : '1600px';
-    const targetZ = isMobile ? 3200 : 5800;
+    const perspective = isMobile ? '800px' : '1600px';
+    const targetZ = isMobile ? 650 : 5800;
 
     grid.style.setProperty('--grid-width', '100%');
     grid.style.setProperty('--perspective', perspective);
@@ -141,9 +141,9 @@ export const PerspectiveGridSection = () => {
         defaults: { ease: 'none', force3D: true },
         scrollTrigger: {
           trigger: container,
-          start: isMobile ? 'top 95%' : 'top 85%',
+          start: isMobile ? 'top 85%' : 'top 85%',
           end: 'bottom 20%',
-          scrub: isMobile ? 0.2 : 0.5,
+          scrub: isMobile ? 0.1 : 0.5,
           fastScrollEnd: true,
           preventOverlaps: true,
         },
@@ -180,9 +180,9 @@ export const PerspectiveGridSection = () => {
 
       timeline.to(whiteOverlay, {
         opacity: 1,
-        duration: 0.08,
+        duration: isMobile ? 0.25 : 0.08,
         ease: 'power1.out',
-      }, 0.18);
+      }, isMobile ? 0.65 : 0.18);
     }, container);
 
     const refreshTimer = setTimeout(() => {
