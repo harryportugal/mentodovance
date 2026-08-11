@@ -141,9 +141,9 @@ export const PerspectiveGridSection = () => {
         defaults: { ease: 'none', force3D: true },
         scrollTrigger: {
           trigger: container,
-          start: isMobile ? 'top 75%' : 'top 85%',
+          start: isMobile ? 'top 95%' : 'top 85%',
           end: 'bottom 20%',
-          scrub: isMobile ? 0.3 : 0.5,
+          scrub: isMobile ? 0.2 : 0.5,
           fastScrollEnd: true,
           preventOverlaps: true,
         },
@@ -185,7 +185,12 @@ export const PerspectiveGridSection = () => {
       }, 0.18);
     }, container);
 
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+
     return () => {
+      clearTimeout(refreshTimer);
       ctx.revert();
       gsap.set(gridWrap, { willChange: 'auto' });
       gsap.set(gridItems, { willChange: 'auto' });
