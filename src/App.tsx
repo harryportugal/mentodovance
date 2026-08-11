@@ -31,7 +31,7 @@ export function App() {
       ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
 
     if (isTouchDevice) {
-      ScrollTrigger.normalizeScroll({ allowNestedScrolls: true });
+      ScrollTrigger.normalizeScroll(true);
       const handleNativeScroll = () => {
         ScrollTrigger.update();
       };
