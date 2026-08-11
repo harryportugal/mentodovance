@@ -295,21 +295,21 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
 
             {/* Card Principal — PURE BLACK */}
             <div className={`
-                !box-content flex flex-col mx-2 md:mx-0 items-stretch relative z-10 rounded-2xl
-                border transition-all duration-500 ease-out
-                bg-black font-sans antialiased text-left
+                box-border flex flex-col mx-2 md:mx-0 items-stretch relative z-10 rounded-2xl
+                border transition-colors duration-500 ease-out
+                bg-black font-sans antialiased text-left h-[165px] sm:h-[180px] justify-between
                 ${hasContent ? 'shadow-[0_14px_40px_rgba(0,0,0,0.45)] border-white/25' : 'shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-white/15'}
             `}>
-                <div className="flex flex-col px-4 sm:px-6 pt-4 sm:pt-5 pb-3 sm:pb-4 gap-3 sm:gap-4 text-left">
+                <div className="flex flex-col px-4 sm:px-6 pt-4 sm:pt-5 pb-3 sm:pb-4 gap-2 sm:gap-3 text-left h-full justify-between">
 
-                    {/* Área de Input com Texto Digitado */}
-                    <div className="relative mb-1 text-left" ref={inputAreaRef}>
-                        <div className="max-h-96 w-full overflow-y-auto font-sans break-words min-h-[2.8rem] sm:min-h-[3rem] pl-0.5 sm:pl-1 text-left">
-                            <div className="w-full text-base sm:text-[20px] leading-relaxed font-normal antialiased py-0 min-h-[1.5em] relative text-left">
+                    {/* Área de Input com Texto Digitado — Fixed Height */}
+                    <div className="relative mb-1 text-left h-[68px] sm:h-[76px] flex items-center overflow-hidden" ref={inputAreaRef}>
+                        <div className="w-full font-sans break-words pl-0.5 sm:pl-1 text-left max-h-full overflow-hidden">
+                            <div className="w-full text-base sm:text-[19px] leading-snug font-normal antialiased py-0 relative text-left">
                                 {/* Camada do texto animado */}
                                 <span
                                     className="text-white relative inline-flex items-center text-left"
-                                    style={{ minHeight: '1.5em' }}
+                                    style={{ minHeight: '1.4em' }}
                                 >
                                     {typedText || '\u200B'}
                                     <span
@@ -358,14 +358,14 @@ export const ClaudeChatInput: React.FC<ClaudeChatInputProps> = ({ active: _activ
 
                         {/* Ferramentas Direitas */}
                         <div className="flex flex-row items-center min-w-0 gap-1">
-                            {/* Seletor de Modelo */}
+                            {/* Seletor de Modelo — Fixed Width for 0 Layout Shift */}
                             <div className="shrink-0 p-1 -m-1 relative" ref={modelBtnRef}>
                                 <div
-                                    className="inline-flex items-center justify-center h-8 rounded-xl px-3 min-w-[4rem] whitespace-nowrap !text-xs pl-2.5 pr-2 gap-1 text-white"
+                                    className="inline-flex items-center justify-center h-8 rounded-xl px-2.5 min-w-[145px] sm:min-w-[165px] whitespace-nowrap !text-xs gap-1 text-white"
                                     style={{
                                         backgroundColor: isDropdownOpen ? 'rgba(113,113,122,0.3)' : 'transparent',
                                         color: '#ffffff',
-                                        transition: 'all 300ms ease',
+                                        transition: 'background-color 300ms ease',
                                     }}
                                 >
                                     <div className="font-ui inline-flex gap-[3px] text-[14px] h-[14px] leading-none items-center">
