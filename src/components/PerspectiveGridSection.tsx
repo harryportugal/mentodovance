@@ -107,9 +107,10 @@ export const PerspectiveGridSection = () => {
   const gridWrapRef = useRef<HTMLDivElement>(null);
 
   const itemRandoms = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     return pixNotifications.map((_, i) => ({
-      zStart: -350 - i * 150,
-      yEnd: -480 + i * 45,
+      zStart: isMobile ? -200 - i * 95 : -350 - i * 150,
+      yEnd: isMobile ? -360 + i * 35 : -480 + i * 45,
     }));
   }, []);
 
@@ -123,8 +124,12 @@ export const PerspectiveGridSection = () => {
     const gridItems = gridWrap.querySelectorAll<HTMLDivElement>('.perspective-grid-item');
     if (!gridItems.length) return;
 
+    const isMobile = window.innerWidth < 768;
+    const perspective = isMobile ? '1000px' : '1600px';
+    const targetZ = isMobile ? 3200 : 5800;
+
     grid.style.setProperty('--grid-width', '100%');
-    grid.style.setProperty('--perspective', '1600px');
+    grid.style.setProperty('--perspective', perspective);
     grid.style.setProperty('--grid-columns', '1');
     grid.style.setProperty('--grid-gap', '0.75rem');
 
@@ -136,9 +141,9 @@ export const PerspectiveGridSection = () => {
         defaults: { ease: 'none', force3D: true },
         scrollTrigger: {
           trigger: container,
-          start: 'top 85%',
+          start: isMobile ? 'top 75%' : 'top 85%',
           end: 'bottom 20%',
-          scrub: 0.5,
+          scrub: isMobile ? 0.3 : 0.5,
           fastScrollEnd: true,
           preventOverlaps: true,
         },
@@ -168,8 +173,8 @@ export const PerspectiveGridSection = () => {
       });
 
       timeline.to(gridWrap, {
-        z: 5800,
-        scale: 1.05,
+        z: targetZ,
+        scale: isMobile ? 1.02 : 1.05,
         force3D: true,
       }, 0);
 
@@ -191,7 +196,7 @@ export const PerspectiveGridSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative z-30 min-h-[230vh] bg-black text-white pt-4 md:pt-8 pb-32 flex flex-col items-center justify-start overflow-visible"
+      className="relative z-30 min-h-[170vh] sm:min-h-[230vh] bg-black text-white pt-4 md:pt-8 pb-32 flex flex-col items-center justify-start overflow-visible"
     >
       <div
         ref={whiteOverlayRef}
